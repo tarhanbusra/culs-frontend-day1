@@ -4,6 +4,8 @@ A small website for day 1 of **Frontend Development**.
 
 It is broken. Your job is to find out why, and to repair it.
 
+It is fixed by @tarhanbusra Büşra Tarhan
+
 ## What you need
 
 - a GitHub account
