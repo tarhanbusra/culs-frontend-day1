@@ -1,28 +1,118 @@
 /* The Little Herb Garden */
 
+/* ─── Design Tokens ──────────────────────────────────────────────── */
 :root {
+  /* Brand palette (kept for existing component rules) */
   --leaf: #2f6b3a;
   --leaf-light: #e7f1e4;
   --soil: #5b4636;
   --paper: #fbfaf5;
   --ink: #1f2420;
   --line: #cfdccb;
+
+  /* Semantic colour aliases */
+  --bg-primary: var(--paper);
+  --surface: #ffffff;
+  --text-main: var(--ink);
+  --text-muted: var(--soil);
+  --accent: var(--leaf);
+  --border-color: var(--line);
+
+  /* Typography */
+  --font-family: system-ui, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+
+  /* Border radii */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
 }
 
-* {
+/* ─── Global Reset ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-body {
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+figure {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
   line-height: 1.5;
-  color: var(--ink);
-  background: var(--paper);
+  color: var(--text-main);
+  background: var(--bg-primary);
+}
+
+/* ─── Responsive Media ───────────────────────────────────────────── */
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Accessibility: Skip Link ───────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0 0 var(--radius-md) 0;
+  transform: translateY(-100%);
+  transition: transform 0.2s ease;
+  z-index: 9999;
+  /* keep it in the document flow so focus works, just move it off-screen */
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  clip: auto;
+  clip-path: none;
+  overflow: visible;
+  white-space: normal;
+}
+
+/* ─── Accessibility: Focus Visible ──────────────────────────────── */
+a:focus-visible,
+button:focus-visible,
+details>summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
 a {
-  color: var(--leaf);
+  color: var(--accent);
 }
 
 .site-header {
@@ -120,9 +210,77 @@ section {
   font-size: 0.875rem;
 }
 
+/* ─── Care Tips: details / summary accordion ─────────────────────── */
+#care-tips details {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--space-md);
+  margin-block-end: var(--space-sm);
+  transition: box-shadow 0.15s ease;
+}
+
+#care-tips details[open] {
+  box-shadow: 0 2px 8px hsl(130 30% 20% / 0.08);
+}
+
+#care-tips details>summary {
+  cursor: pointer;
+  list-style: none;
+  /* remove default browser triangle */
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: 600;
+  color: var(--text-main);
+  user-select: none;
+}
+
+/* custom disclosure arrow */
+#care-tips details>summary::before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+#care-tips details[open]>summary::before {
+  transform: rotate(45deg);
+}
+
+/* suppress the default WebKit marker too */
+#care-tips details>summary::-webkit-details-marker {
+  display: none;
+}
+
+#care-tips details>summary h3 {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: inherit;
+}
+
+#care-tips details>p {
+  margin-block-start: var(--space-sm);
+  padding-inline-start: calc(0.5rem + var(--space-sm));
+  /* align with summary text */
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ─── Footer ──────────────────────────────────────────────────────── */
 footer {
-  padding: 1.5rem;
-  border-top: 1px solid var(--line);
-  text-align: center;
-  color: var(--soil);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg) var(--space-md);
+  margin-block-start: var(--space-xl);
+  border-top: 1px solid var(--border-color);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
 }

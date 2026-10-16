@@ -5,59 +5,123 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Little Herb Garden</title>
+  <meta name="description"
+    content="A small garden with herbs for the kitchen, for tea and for the bees. Discover what grows here.">
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
 
 <body>
-  <header class="site-header">
-    <img class="logo" src="images/logo.svg" alt="" width="48" height="48">
+
+  <!-- Skip navigation link for keyboard / screen-reader users -->
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+  <header class="site-header" role="banner">
+    <img class="logo" src="images/logo.svg" alt="" width="48" height="48" aria-hidden="true">
     <p class="site-name">The Little Herb Garden</p>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul>
         <li><a href="#herbs">Herbs</a></li>
         <li><a href="#visit">Visit</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#care-tips">Care Tips</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="intro">
+  <!-- ═══════════════════════════ MAIN ════════════════════════════ -->
+  <main id="main-content">
+
+    <!-- Hero / intro -->
+    <section class="intro" aria-labelledby="hero-heading">
       <div>
-        <h1>Herbs you can smell, taste and grow</h1>
+        <h1 id="hero-heading">Herbs you can smell, taste and grow</h1>
         <p>A small garden with herbs for the kitchen, for tea and for the bees.
           See <a href="#herbs">what grows here</a></p>
       </div>
-      <img class="hero" src="images/garden.svg" alt="Two raised beds full of herbs, with a bee">
+
+      <figure>
+        <img class="hero" src="images/garden.svg"
+          alt="Two raised garden beds filled with a variety of green herbs, with a bee visiting the flowers">
+        <figcaption>Our raised herb beds in full bloom — a haven for pollinators.</figcaption>
+      </figure>
     </section>
 
-    <section id="herbs">
-      <h2>What grows here</h2>
+    <!-- Herb catalogue — IDs and classes kept identical for app.js -->
+    <section id="herbs" aria-labelledby="herbs-heading">
+      <h2 id="herbs-heading">What grows here</h2>
       <p class="count">Loading the herbs…</p>
       <ul id="herbs-list" class="cards"></ul>
     </section>
 
-    <section id="visit">
-      <h2>Visit</h2>
+    <!-- Visit info -->
+    <section id="visit" aria-labelledby="visit-heading">
+      <h2 id="visit-heading">Visit</h2>
       <p>The garden is open every day from sunrise to sunset.
         Bring a friend, rub a leaf between your fingers, and leave the bees alone.</p>
     </section>
 
-    <section id="about">
-      <h2>About</h2>
+    <!-- Care tips FAQ — pure HTML5, no JavaScript -->
+    <section id="care-tips" aria-labelledby="care-tips-heading">
+      <h2 id="care-tips-heading">Herb care tips</h2>
+      <p>Common questions about keeping your herbs happy.</p>
+
+      <details>
+        <summary>
+          <h3>How often should I water my herbs?</h3>
+        </summary>
+        <p>Most kitchen herbs prefer soil that dries out slightly between waterings.
+          Stick your finger about 2 cm into the soil — if it feels dry, water thoroughly.
+          Overwatering is the most common mistake with pot-grown herbs.</p>
+      </details>
+
+      <details>
+        <summary>
+          <h3>Do herbs need full sun?</h3>
+        </summary>
+        <p>Mediterranean herbs such as basil, rosemary, and thyme thrive in at least
+          six hours of direct sunlight. Mint and parsley tolerate partial shade well
+          and can scorch in intense afternoon sun.</p>
+      </details>
+
+      <details>
+        <summary>
+          <h3>When is the best time to harvest?</h3>
+        </summary>
+        <p>Harvest in the morning after the dew has dried but before the heat of midday.
+          This is when the essential oils — responsible for flavour and aroma — are
+          most concentrated. Never remove more than one-third of the plant at once.</p>
+      </details>
+
+      <details>
+        <summary>
+          <h3>Can I grow herbs indoors?</h3>
+        </summary>
+        <p>Yes! Place pots on a south- or west-facing windowsill for maximum light.
+          Rotate the pot a quarter-turn every few days so all sides receive equal sun.
+          A grow-light set to 14–16 hours per day works well in darker rooms.</p>
+      </details>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
       <p>The garden is made up, and so is this site: a practice project for
         <a href="https://github.com/pepe/culs-frontend-day1">Frontend Development, day 1</a>.
       </p>
     </section>
+
   </main>
 
-  <footer>
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer role="contentinfo">
     <p>Made with HTML, CSS and JavaScript.
       <a href="https://developer.mozilla.org/">MDN</a> helped.
     </p>
   </footer>
+
 </body>
 
 </html>
