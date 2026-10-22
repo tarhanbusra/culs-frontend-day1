@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <style>
+    .sky { fill: #15222e; }
+    .sun { fill: #fef08a; filter: drop-shadow(0 0 10px rgba(254, 240, 138, 0.45)); }
+    .grass { fill: #233827; }
+    .bed { fill: #523b2c; }
+    .basil { fill: #347d3f; }
+    .sage { fill: #6b8f75; }
+    .lavender-stem { stroke: #3b5f33; }
+    .lavender-bloom { fill: #a78bfa; }
+  </style>
+
+  <!-- sky, sun and grass -->
+  <rect class="sky" width="600" height="400" />
+  <circle class="sun" cx="510" cy="75" r="40" />
+  <rect class="grass" y="250" width="600" height="150" />
+
+  <!-- the left bed: basil and sage -->
+  <g class="basil">
+    <ellipse cx="80" cy="235" rx="30" ry="34" />
+    <ellipse cx="140" cy="228" rx="34" ry="40" />
+    <ellipse cx="205" cy="236" rx="30" ry="32" />
+    <ellipse cx="255" cy="240" rx="22" ry="26" />
+  </g>
+  <g class="sage">
+    <ellipse cx="112" cy="250" rx="20" ry="16" />
+    <ellipse cx="232" cy="252" rx="18" ry="14" />
+  </g>
+  <rect class="bed" x="40" y="250" width="240" height="70" rx="6" />
+
+  <!-- the right bed: lavender -->
+  <g class="lavender-stem" stroke-width="4" stroke-linecap="round">
+    <path d="M350 250 V185" />
+    <path d="M385 250 V170" />
+    <path d="M420 250 V180" />
+    <path d="M455 250 V165" />
+    <path d="M490 250 V178" />
+    <path d="M525 250 V188" />
+  </g>
+  <g class="lavender-bloom">
+    <ellipse cx="350" cy="180" rx="7" ry="16" />
+    <ellipse cx="385" cy="165" rx="7" ry="16" />
+    <ellipse cx="420" cy="175" rx="7" ry="16" />
+    <ellipse cx="455" cy="160" rx="7" ry="16" />
+    <ellipse cx="490" cy="173" rx="7" ry="16" />
+    <ellipse cx="525" cy="183" rx="7" ry="16" />
+  </g>
+  <rect class="bed" x="320" y="250" width="240" height="70" rx="6" />
+
+  <!-- a bee -->
+  <g transform="translate(300 120)">
+    <ellipse cx="-6" cy="-12" rx="10" ry="7" fill="#ffffff" opacity="0.8" />
+    <ellipse cx="6" cy="-12" rx="10" ry="7" fill="#ffffff" opacity="0.8" />
+    <ellipse cx="0" cy="0" rx="16" ry="11" fill="#f2c230" />
+    <path d="M-5 -10 V10 M5 -10 V10" stroke="#2b2b2b" stroke-width="4" />
+    <circle cx="16" cy="-2" r="2" fill="#2b2b2b" />
+  </g>
+</svg>

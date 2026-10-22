@@ -34,13 +34,19 @@ const STORAGE_KEY = "favoriteHerbs"
 const THEME_KEY = "theme"
 
 function applyTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme)
-  const isDark = theme === "dark"
-  themeToggle.textContent = isDark ? "☀️" : "🌙"
+  document.documentElement.setAttribute("data-theme", theme);
+  const isDark = theme === "dark";
+  themeToggle.textContent = isDark ? "☀️" : "🌙";
   themeToggle.setAttribute(
     "aria-label",
     isDark ? "Switch to light mode" : "Switch to dark mode"
-  )
+  );
+
+  // Görseli ister .hero-figure img olsun, ister src'sinde garden geçen img olsun doğrudan yakalar
+  const heroImg = document.querySelector(".hero-figure img") || document.querySelector('img[src*="garden"]');
+  if (heroImg) {
+    heroImg.src = isDark ? "images/garden-dark.svg" : "images/garden.svg";
+  }
 }
 
 function initTheme() {
@@ -323,7 +329,7 @@ nextBtn.addEventListener("click", () => navigateModal(currentModalIndex + 1))
 document.addEventListener("keydown", e => {
   if (!modal.open) return
   if (e.key === "ArrowRight") { e.preventDefault(); navigateModal(currentModalIndex + 1) }
-  if (e.key === "ArrowLeft")  { e.preventDefault(); navigateModal(currentModalIndex - 1) }
+  if (e.key === "ArrowLeft") { e.preventDefault(); navigateModal(currentModalIndex - 1) }
 })
 
 // ─── Favourite toggle ────────────────────────────────────────────────────────
