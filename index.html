@@ -52,6 +52,20 @@
     <!-- Herb catalogue — IDs and classes kept identical for app.js -->
     <section id="herbs" aria-labelledby="herbs-heading">
       <h2 id="herbs-heading">What grows here</h2>
+
+      <!-- Search & filter bar -->
+      <div class="herb-controls" role="search">
+        <label for="herb-search" class="sr-only">Search herbs</label>
+        <input type="search" id="herb-search" class="herb-search" placeholder="Search herbs by name or use…"
+          aria-label="Search herbs by name or use" autocomplete="off">
+
+        <div class="filter-group" role="group" aria-label="Filter by life cycle">
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" data-filter="annual" aria-pressed="false">Annual</button>
+          <button class="filter-btn" data-filter="perennial" aria-pressed="false">Perennial</button>
+        </div>
+      </div>
+
       <p class="count">Loading the herbs…</p>
       <ul id="herbs-list" class="cards"></ul>
     </section>
@@ -112,6 +126,31 @@
         <a href="https://github.com/pepe/culs-frontend-day1">Frontend Development, day 1</a>.
       </p>
     </section>
+
+    <!-- Herb detail modal -->
+    <dialog id="herb-modal" class="herb-modal" aria-labelledby="modal-title" aria-modal="true">
+      <button type="button" class="nav-btn prev-btn" aria-label="Previous herb">&#10094;</button>
+      <button type="button" class="nav-btn next-btn" aria-label="Next herb">&#10095;</button>
+
+      <div class="modal-inner">
+        <button type="button" class="close-btn" aria-label="Close modal">&times;</button>
+
+        <div class="modal-illustration" id="modal-illustration" aria-hidden="true"></div>
+
+        <header class="modal-header">
+          <h2 id="modal-title" class="modal-name"></h2>
+          <span class="badge"></span>
+        </header>
+
+        <p class="modal-latin"></p>
+        <p class="modal-use"></p>
+
+        <button type="button" id="fav-btn" class="fav-btn" aria-pressed="false">
+          <span class="fav-icon" aria-hidden="true">☆</span>
+          <span class="fav-label">Add to favourites</span>
+        </button>
+      </div>
+    </dialog>
 
   </main>
 
