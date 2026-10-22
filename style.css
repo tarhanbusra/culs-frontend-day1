@@ -774,3 +774,63 @@ footer {
   font-size: var(--font-size-sm);
   color: var(--text-muted);
 }
+
+/* Navigation & Footer Interactive Capsule Links */
+nav a,
+footer a,
+.nav-link,
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  /* Alt çizgiyi kaldırdık */
+  border: 1px solid transparent;
+  /* Titremeyi önleyen görünmez çerçeve */
+  transition: all 0.2s ease;
+}
+
+/* Mouse ile üzerine gelince (Hover) - Annual butonundaki gibi zarif kutucuk */
+nav a:hover,
+footer a:hover,
+.nav-link:hover,
+.footer-link:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Dark modda link hover kutucuğu */
+html[data-theme="dark"] nav a:hover,
+html[data-theme="dark"] footer a:hover,
+html[data-theme="dark"] .nav-link:hover,
+html[data-theme="dark"] .footer-link:hover {
+  border-color: var(--accent);
+  background-color: var(--leaf-light);
+  color: var(--accent);
+}
+
+/* Klavye ile Tab basılınca (Focus-Visible) - Güneş butonundaki gibi belirgin çift halka */
+nav a:focus-visible,
+footer a:focus-visible,
+.nav-link:focus-visible,
+.footer-link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+/* Dark modda klavye odağı */
+html[data-theme="dark"] nav a:focus-visible,
+html[data-theme="dark"] footer a:focus-visible,
+html[data-theme="dark"] .nav-link:focus-visible,
+html[data-theme="dark"] .footer-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-color: var(--accent);
+  background-color: var(--leaf-light);
+}
