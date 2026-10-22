@@ -37,6 +37,38 @@
   --radius-md: 0.5rem;
 }
 
+/* ─── Dark Theme ─────────────────────────────────────────────────── */
+html[data-theme="dark"] {
+  --bg-primary:   #121814;
+  --surface:      #1b2620;
+  --text-main:    #e8f0ec;
+  --text-muted:   #9eb3a6;
+  --border-color: #2c3e34;
+  --leaf-light:   #1e2f27;
+  --leaf:         #4caf78;
+  --accent:       #4caf78;
+  --soil:         #9eb3a6;
+  --paper:        #121814;
+  --line:         #2c3e34;
+}
+
+/* System-level fallback when no saved preference exists (JS will override) */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --bg-primary:   #121814;
+    --surface:      #1b2620;
+    --text-main:    #e8f0ec;
+    --text-muted:   #9eb3a6;
+    --border-color: #2c3e34;
+    --leaf-light:   #1e2f27;
+    --leaf:         #4caf78;
+    --accent:       #4caf78;
+    --soil:         #9eb3a6;
+    --paper:        #121814;
+    --line:         #2c3e34;
+  }
+}
+
 /* ─── Global Reset ───────────────────────────────────────────────── */
 *,
 *::before,
@@ -348,6 +380,42 @@ section {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+}
+
+/* ─── Theme toggle button ────────────────────────────────────────────────── */
+.theme-toggle {
+  margin-left: var(--space-md);
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease,
+              transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: rotate(20deg);
+}
+
+.theme-toggle:active {
+  transform: rotate(20deg) scale(0.92);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  border-radius: 50%;
 }
 
 /* ─── Card: interactive states ───────────────────────────────────────────── */

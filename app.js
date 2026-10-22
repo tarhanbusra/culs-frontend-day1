@@ -18,6 +18,7 @@ const favLabel = document.querySelector(".fav-label")
 const modalIllustration = document.querySelector("#modal-illustration")
 const prevBtn = document.querySelector(".prev-btn")
 const nextBtn = document.querySelector(".next-btn")
+const themeToggle = document.querySelector("#theme-toggle")
 
 // ─── In-memory state ─────────────────────────────────────────────────────────
 let allHerbs = []         // full dataset, populated once after fetch
@@ -28,6 +29,33 @@ let visibleHerbsSnapshot = [] // snapshot of filtered list taken when modal open
 
 // ─── LocalStorage helpers ────────────────────────────────────────────────────
 const STORAGE_KEY = "favoriteHerbs"
+
+// ─── Theme: apply & persist ─────────────────────────────────────────────────
+const THEME_KEY = "theme"
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme)
+  const isDark = theme === "dark"
+  themeToggle.textContent = isDark ? "☀️" : "🌙"
+  themeToggle.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light mode" : "Switch to dark mode"
+  )
+}
+
+function initTheme() {
+  const saved = localStorage.getItem(THEME_KEY)
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+  applyTheme(saved ?? (prefersDark ? "dark" : "light"))
+}
+
+themeToggle.addEventListener("click", () => {
+  const next = document.documentElement.getAttribute("data-theme") === "dark"
+    ? "light"
+    : "dark"
+  applyTheme(next)
+  localStorage.setItem(THEME_KEY, next)
+})
 
 function getFavourites() {
   try {
@@ -350,4 +378,5 @@ async function show() {
   render()
 }
 
+initTheme()  // apply saved / system theme before first paint
 show()
