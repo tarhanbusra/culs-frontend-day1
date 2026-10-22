@@ -211,10 +211,7 @@ section {
   border-radius: 0.5rem;
 }
 
-/* Hero image: gentle desaturation in dark mode so the bright sky doesn't jar */
-html[data-theme="dark"] .hero {
-  filter: brightness(0.8) saturate(0.75);
-}
+
 
 .cards {
   display: grid;
